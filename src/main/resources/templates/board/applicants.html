@@ -5,14 +5,7 @@
     <title>모집 현황</title>
     <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <script>
-        function process(groupId, action) {
-            let msg = action == 'APPROVE' ? '승인하시겠습니까?' : '거절하시겠습니까?';
-            if(confirm(msg)) {
-                location.href = '/board/process?groupId=' + groupId + '&action=' + action + '&boardNum=[[${board.boardNum}]]';
-            }
-        }
-    </script>
+    <script th:src="@{/js/board.js}"></script>
 </head>
 <body>
 <h1>모집 현황</h1>
@@ -29,11 +22,14 @@
         <td th:text="${group.joinedDate}"></td>
         <td>
             <div th:if="${group.role != 'LEADER' and board.status == 'OPEN'}">
-                <button type="button" th:onclick="process([[${group.groupId}]], 'APPROVE')">승인</button>
-                <button type="button" th:onclick="process([[${group.groupId}]], 'REJECT')">거절</button>
+                <button type="button" th:onclick="processApplication([[${group.groupId}]], 'APPROVE', [[${board.boardNum}]])">승인</button>
+                <button type="button" class="secondary" th:onclick="processApplication([[${group.groupId}]], 'REJECT', [[${board.boardNum}]])">거절</button>
             </div>
         </td>
     </tr>
 </table>
+
+<br>
+<a th:href="@{/board/detail(boardNum=${board.boardNum})}">돌아가기</a>
 </body>
 </html>

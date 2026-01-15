@@ -5,7 +5,7 @@ body {
     font-family: 'Malgun Gothic', sans-serif;
     margin: 0;
     padding: 20px;
-    text-align: center; /* 전체 중앙 정렬 */
+    text-align: center;
     background-color: #f9f9f9;
 }
 
@@ -33,9 +33,9 @@ a:hover {
 
 /* 테이블 스타일 */
 table {
-    margin: 0 auto; /* 테이블 가운데 정렬 */
+    margin: 0 auto;
     border-collapse: collapse;
-    width: 800px; /* 기본 너비 설정 */
+    width: 800px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
@@ -62,7 +62,7 @@ select {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* padding 포함 너비 계산 */
+    box-sizing: border-box;
 }
 
 textarea {
@@ -95,12 +95,8 @@ input[type="reset"],
 button.secondary {
     background-color: #f44336;
 }
-input[type="reset"]:hover,
-button.secondary:hover {
-    background-color: #d32f2f;
-}
 
-/* 상태별 색상 (PDF 요구사항 반영) */
+/* 상태별 색상 (list.html 등에서 사용) */
 .blue, .status-open {
     color: blue !important;
     font-weight: bold;
@@ -111,14 +107,15 @@ button.secondary:hover {
     font-weight: bold;
 }
 
-/* 에러 메시지 */
+/* 에러 메시지 스타일 */
 .error {
     color: red;
     font-size: 0.9em;
     margin-top: 5px;
+    font-weight: bold;
 }
 
-/* 로그인/회원가입 폼 너비 조정 */
+/* 폼 테이블 너비 조정 */
 form table {
-    width: 400px;
+    width: 500px;
 }
