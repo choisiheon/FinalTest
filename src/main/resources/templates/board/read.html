@@ -35,18 +35,18 @@
 </table>
 
 <div style="margin-top: 20px;">
-        <span th:if="${#authentication.name == board.memberId}">
-            <button type="button" th:onclick="|location.href='@{/board/applicants(boardNum=${board.boardNum})}'|">확인하기</button>
-            <button type="button" th:onclick="checkDelete([[${board.boardNum}]])">삭제하기</button>
-        </span>
+    <span th:if="${#authentication.name == board.memberId}">
+        <button type="button" th:onclick="|location.href='@{/board/applicants(boardNum=${board.boardNum})}'|">확인하기</button>
+        <button type="button" th:onclick="|checkDelete(${board.boardNum})|">삭제하기</button>
+    </span>
 
     <span th:if="${#authentication.name != board.memberId and board.status == 'OPEN'}">
-            <button type="button" th:onclick="checkApply([[${board.boardNum}]])">신청하기</button>
-        </span>
+        <button type="button" th:onclick="|checkApply(${board.boardNum})|">신청하기</button>
+    </span>
 
     <span th:if="${#authentication.name != board.memberId and board.status == 'CLOSED'}">
-            <span class="red">마감되었습니다.</span>
-        </span>
+        <span class="red">마감되었습니다.</span>
+    </span>
 
     <button type="button" onclick="location.href='/board/list'">목록으로</button>
 </div>
