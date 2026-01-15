@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+/* 전체 레이아웃 */
+body {
+    font-family: 'Malgun Gothic', sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center; /* 전체 중앙 정렬 */
+    background-color: #f9f9f9;
+}
+
+/* 제목 스타일 */
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+h3 {
+    color: #555;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+/* 링크 스타일 */
+a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* 테이블 스타일 */
+table {
+    margin: 0 auto; /* 테이블 가운데 정렬 */
+    border-collapse: collapse;
+    width: 800px; /* 기본 너비 설정 */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+
+/* 입력 폼 스타일 */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* padding 포함 너비 계산 */
+}
+
+textarea {
+    width: 95%;
+    resize: vertical;
+}
+
+/* 버튼 스타일 */
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #45a049;
+}
+
+/* 취소/삭제 등 보조 버튼 색상 */
+input[type="reset"],
+button.secondary {
+    background-color: #f44336;
+}
+input[type="reset"]:hover,
+button.secondary:hover {
+    background-color: #d32f2f;
+}
+
+/* 상태별 색상 (PDF 요구사항 반영) */
+.blue, .status-open {
+    color: blue !important;
+    font-weight: bold;
+}
+
+.red, .status-closed {
+    color: red !important;
+    font-weight: bold;
+}
+
+/* 에러 메시지 */
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* 로그인/회원가입 폼 너비 조정 */
+form table {
+    width: 400px;
+}
