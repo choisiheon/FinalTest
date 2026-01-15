@@ -21,9 +21,9 @@
         <td th:text="${group.status}"></td>
         <td th:text="${group.joinedDate}"></td>
         <td>
-            <div th:if="${group.role != 'LEADER' and board.status == 'OPEN'}">
-                <button type="button" th:onclick="processApplication([[${group.groupId}]], 'APPROVE', [[${board.boardNum}]])">승인</button>
-                <button type="button" class="secondary" th:onclick="processApplication([[${group.groupId}]], 'REJECT', [[${board.boardNum}]])">거절</button>
+            <div th:if="${group.role != 'LEADER' and board.status == 'OPEN' and group.status == 'PENDING'}">
+                <button type="button" th:onclick="|processApplication(${group.groupId}, 'APPROVE', ${board.boardNum})|">승인</button>
+                <button type="button" class="secondary" th:onclick="|processApplication(${group.groupId}, 'REJECT', ${board.boardNum})|">거절</button>
             </div>
         </td>
     </tr>

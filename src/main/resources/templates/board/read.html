@@ -10,9 +10,8 @@
 <body>
 <h1>글 상세보기</h1>
 
-<script th:if="${param.error == 'duplicate'}">
-    alert('이미 신청한 모임입니다.');
-</script>
+<input type="hidden" id="errorParam" th:value="${param.error != null ? param.error[0] : ''}">
+<input type="hidden" id="boardNumParam" th:value="${board.boardNum}">
 
 <table border="1">
     <tr>
@@ -48,7 +47,7 @@
         <span class="red">마감되었습니다.</span>
     </span>
 
-    <button type="button" onclick="location.href='/board/list'">목록으로</button>
+    <button type="button" onclick="history.back()">돌아가기</button>
 </div>
 </body>
 </html>

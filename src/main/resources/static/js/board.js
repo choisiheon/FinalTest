@@ -8,8 +8,19 @@ $(document).ready(function() {
         });
     }
 
-    // 2. 신청 결과 메시지 확인 (상세 페이지)
-    // URL 파라미터나 hidden input 등으로 에러 체크가 필요하다면 여기서 구현
+    // [수정] 2. 신청 결과 메시지 확인 (상세 페이지)
+    // HTML의 hidden input에서 값 읽어오기
+    let errorParam = $('#errorParam').val();
+    let boardNumParam = $('#boardNumParam').val();
+
+    if (errorParam === 'duplicate') {
+        alert('이미 신청한 모임입니다.');
+
+        // 알림 후 URL에서 파라미터 제거 (깔끔한 주소창 유지)
+        if (boardNumParam) {
+            history.replaceState({}, null, location.pathname + "?boardNum=" + boardNumParam);
+        }
+    }
 });
 
 /**
@@ -69,6 +80,7 @@ function processApplication(groupId, action, boardNum) {
         location.href = '/board/process?groupId=' + groupId + '&action=' + action + '&boardNum=' + boardNum;
     }
 }
+
 /**
  * 글쓰기 폼 유효성 검사
  */

@@ -33,6 +33,7 @@ CREATE TABLE community_board
 );
 select * from community_board;
 
+
 CREATE TABLE community_group
 (
     group_id    INT AUTO_INCREMENT PRIMARY KEY COMMENT '참여 번호',
@@ -54,9 +55,9 @@ select * from community_group;
 -- 1. 회원 데이터 생성 (비밀번호는 모두 '1234'로 암호화된 값입니다)
 INSERT INTO community_member (member_id, member_pw, name, email)
 VALUES
-    ('user1', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGqqzdgow.9PBqvIcJGflTLPFxX57q', '김철수', 'user1@test.com'),
-    ('user2', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGqqzdgow.9PBqvIcJGflTLPFxX57q', '이영희', 'user2@test.com'),
-    ('user3', '$2a$10$8.UnVuG9HHgffUDAlk8qfOuVGqqzdgow.9PBqvIcJGflTLPFxX57q', '박민수', 'user3@test.com');
+    ('user1', '$2a$10$JLqXhjJSM6ROZCADrGZo3OQeeLApsAqkOPwA8xGMZbxRTUWw0soQi', '김철수', 'user1@test.com'),
+    ('user2', '$2a$10$JLqXhjJSM6ROZCADrGZo3OQeeLApsAqkOPwA8xGMZbxRTUWw0soQi', '이영희', 'user2@test.com'),
+    ('user3', '$2a$10$JLqXhjJSM6ROZCADrGZo3OQeeLApsAqkOPwA8xGMZbxRTUWw0soQi', '박민수', 'user3@test.com');
 
 
 -- 2. 게시판 데이터 생성
