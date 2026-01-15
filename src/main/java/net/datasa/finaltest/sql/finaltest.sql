@@ -13,6 +13,7 @@ CREATE TABLE community_member
     name      VARCHAR(20)  NOT NULL COMMENT '이름',
     email     VARCHAR(200) COMMENT '이메일'
 );
+SELECT *FROM community_member;
 
 CREATE TABLE community_board
 (
