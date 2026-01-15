@@ -84,6 +84,14 @@ function checkWrite() {
         return false;
     }
 
+    // 카테고리가 선택되었는지 확인
+    let category = document.getElementById('category');
+    if (category.value === '') {
+        alert('카테고리를 선택해주세요.');
+        category.focus();
+        return false;
+    }
+
     // 내용 입력 확인
     if (contents.value.trim() === '') {
         alert('내용을 입력해주세요.');
