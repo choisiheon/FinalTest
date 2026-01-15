@@ -4,28 +4,30 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
     <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
-    <script th:src="@{/js/member/member.js}"></script>
+
+    <script th:src="@{/js/member.js}"></script>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <h1>회원가입</h1>
-<form action="/member/join" method="post">
+
+<form action="/member/join" method="post" onsubmit="return checkJoin()">
     <table border="1">
         <tr>
             <th>아이디</th>
-            <td><input type="text" name="memberId" required placeholder="ID 입력"></td>
+            <td><input type="text" name="memberId" id="memberId" required placeholder="ID 입력"></td>
         </tr>
         <tr>
             <th>비밀번호</th>
-            <td><input type="password" name="memberPw" required placeholder="비밀번호 입력"></td>
+            <td><input type="password" name="memberPw" id="memberPw" required placeholder="비밀번호 입력"></td>
         </tr>
         <tr>
             <th>이름</th>
-            <td><input type="text" name="name" required placeholder="이름 입력"></td>
+            <td><input type="text" name="name" id="name" required placeholder="이름 입력"></td>
         </tr>
         <tr>
             <th>이메일</th>
-            <td><input type="email" name="email" placeholder="이메일 입력"></td>
+            <td><input type="email" name="email" id="email" placeholder="이메일 입력"></td>
         </tr>
         <tr>
             <td colspan="2" align="center">

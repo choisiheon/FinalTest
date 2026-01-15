@@ -69,3 +69,34 @@ function processApplication(groupId, action, boardNum) {
         location.href = '/board/process?groupId=' + groupId + '&action=' + action + '&boardNum=' + boardNum;
     }
 }
+/**
+ * 글쓰기 폼 유효성 검사
+ */
+function checkWrite() {
+    let title = document.getElementById('title');
+    let contents = document.getElementById('contents');
+    let capacity = document.getElementById('capacity');
+
+    // 제목 길이 검사
+    if (title.value.trim().length < 3 || title.value.trim().length > 100) {
+        alert('제목은 3~100자 사이로 입력해주세요.');
+        title.focus();
+        return false;
+    }
+
+    // 내용 입력 확인
+    if (contents.value.trim() === '') {
+        alert('내용을 입력해주세요.');
+        contents.focus();
+        return false;
+    }
+
+    // 정원 검사 (2명 이상)
+    if (capacity.value < 2) {
+        alert('정원은 최소 2명 이상이어야 합니다.');
+        capacity.focus();
+        return false;
+    }
+
+    return true;
+}

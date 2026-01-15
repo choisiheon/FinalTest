@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <title>모집글 작성</title>
     <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/board.js}"></script>
 </head>
 <body>
 <h1>모집글 작성</h1>
-<form action="/board/write" method="post">
+
+<form action="/board/write" method="post" onsubmit="return checkWrite()">
     <table border="1">
         <tr>
             <th>카테고리</th>
             <td>
-                <select name="category">
+                <select name="category" id="category">
                     <option value="STUDY">STUDY</option>
                     <option value="HEALTHY">HEALTHY</option>
                     <option value="TRIP">TRIP</option>
@@ -22,19 +25,19 @@
         </tr>
         <tr>
             <th>제목</th>
-            <td><input type="text" name="title" required style="width: 300px;"></td>
+            <td><input type="text" name="title" id="title" required style="width: 300px;" placeholder="제목 (3자 이상)"></td>
         </tr>
         <tr>
             <th>모집 정원</th>
             <td>
-                <input type="number" name="capacity" min="2" max="100" value="5" required> 명
+                <input type="number" name="capacity" id="capacity" min="2" max="100" value="5" required> 명
                 (본인 포함)
             </td>
         </tr>
         <tr>
             <th>내용</th>
             <td>
-                <textarea name="contents" rows="10" cols="50" required></textarea>
+                <textarea name="contents" id="contents" rows="10" cols="50" required placeholder="내용을 입력하세요"></textarea>
             </td>
         </tr>
         <tr>
