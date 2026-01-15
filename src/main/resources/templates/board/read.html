@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>글 상세보기</title>
+    <script>
+        function checkDelete() {
+            if(confirm('정말 삭제하시겠습니까?')) {
+                location.href = '/board/delete?boardNum=[[${board.boardNum}]]';
+            }
+        }
+        function checkApply() {
+            let error = '[[${param.error}]]';
+            if (error == 'duplicate') {
+                alert('중복 신청할 수 없습니다.');
+            }
+        }
+        window.onload = checkApply;
+    </script>
+</head>
+<body>
+<h1>글 상세보기</h1>
+<table border="1">
+    <tr>
+        <th>번호</th><td th:text="${board.boardNum}"></td>
+        <th>카테고리</th><td th:text="${board.category}"></td>
+        <th>주최자</th><td th:text="${board.memberId}"></td>
+    </tr>
+    <tr>
+        <th>모집인원</th><td th:text="|${board.headcnt}/${board.capacity}|"></td>
+        <th>모집현황</th>
+        <td th:text="${board.status}" th:style="${board.status == 'OPEN' ? 'color:blue' : 'color:red'}"></td>
+        <th>작성일</th><td th:text="${board.createDate}"></td>
+    </tr>
+    <tr>
+        <th>제목</th><td colspan="5" th:text="${board.title}"></td>
+    </tr>
+    <tr>
+        <th>내용</th><td colspan="5" th:text="${board.contents}" style="height:100px;"></td>
+    </tr>
+</table>
+
+<div th:if="${#authentication.name == board.memberId}">
+    <button type="button" th:onclick="|location.href='@{/board/applicants(boardNum=${board.boardNum})}'|">확인하기</button>
+    <button type="button" onclick="checkDelete()">삭제하기</button>
+</div>
+
+<div th:if="${#authentication.name != board.memberId and board.status == 'OPEN'}">
+    <button type="button" th:onclick="|location.href='@{/board/apply(boardNum=${board.boardNum})}'|">신청하기</button>
+</div>
+
+<div th:if="${#authentication.name != board.memberId and board.status == 'CLOSED'}">
+    <span>마감되었습니다.</span>
+</div>
+</body>
+</html>

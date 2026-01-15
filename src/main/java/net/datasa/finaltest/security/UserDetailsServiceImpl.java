@@ -2,6 +2,7 @@ package net.datasa.finaltest.security;
 
 import lombok.RequiredArgsConstructor;
 import net.datasa.finaltest.entity.MemberEntity;
+import net.datasa.finaltest.repository.MemberRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

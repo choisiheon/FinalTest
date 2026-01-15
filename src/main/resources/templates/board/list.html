@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <style>
+        .blue { color: blue; }
+        .red { color: red; }
+    </style>
+    <script>
+        $(document).ready(function() {
+            loadList('ALL');
+
+            $('#category').change(function() {
+                loadList($(this).val());
+            });
+        });
+
+        function loadList(category) {
+            $.ajax({
+                url: '/board/ajaxList',
+                type: 'post',
+                data: {category: category},
+                success: function(list) {
+                    let html = '';
+                    $.each(list, function(i, item) {
+                        let statusClass = item.status == 'OPEN' ? 'blue' : 'red';
+                        html += `<tr>
+                            <td>${item.category}</td>
+                            <td><a href="/board/detail?boardNum=${item.boardNum}">${item.title}</a></td>
+                            <td>${item.memberId}</td>
+                            <td class="${statusClass}">${item.status}</td>
+                            <td>(${item.headcnt}/${item.capacity})</td>
+                            <td>${item.createDate}</td>
+                        </tr>`;
+                    });
+                    $('#listArea').html(html);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<h1>게시판</h1>
+<select id="category">
+    <option value="ALL">전체 카테고리 보기</option>
+    <option value="STUDY">STUDY</option>
+    <option value="HEALTHY">HEALTHY</option>
+    <option value="TRIP">TRIP</option>
+</select>
+<a href="/board/writeForm">글쓰기</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>카테고리</th><th>제목</th><th>작성자</th><th>모집상태</th><th>정원수</th><th>작성일</th>
+    </tr>
+    </thead>
+    <tbody id="listArea"></tbody>
+</table>
+</body>
+</html>

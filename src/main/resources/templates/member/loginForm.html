@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+</head>
+<body>
+<h1>로그인</h1>
+
+<div th:if="${param.error}" style="color:red; margin-bottom: 10px;">
+    아이디 또는 비밀번호가 잘못되었습니다.
+</div>
+
+<form action="/member/login" method="post">
+    <table border="1">
+        <tr>
+            <th>아이디</th>
+            <td><input type="text" name="id" required></td>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td><input type="password" name="password" required></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="로그인">
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+<a href="/member/joinForm">회원가입</a> | <a href="/">홈으로</a>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+<h1>회원가입</h1>
+<form action="/member/join" method="post">
+    <table border="1">
+        <tr>
+            <th>아이디</th>
+            <td><input type="text" name="memberId" required placeholder="ID 입력"></td>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td><input type="password" name="memberPw" required placeholder="비밀번호 입력"></td>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td><input type="text" name="name" required placeholder="이름 입력"></td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td><input type="email" name="email" placeholder="이메일 입력"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="가입하기">
+                <input type="reset" value="초기화">
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+<a href="/">홈으로 돌아가기</a>
+</body>
+</html>

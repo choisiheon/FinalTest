@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>모집 현황</title>
+    <script>
+        function process(groupId, action) {
+            let msg = action == 'APPROVE' ? '승인하시겠습니까?' : '거절하시겠습니까?';
+            if(confirm(msg)) {
+                location.href = '/board/process?groupId=' + groupId + '&action=' + action + '&boardNum=[[${board.boardNum}]]';
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>모집 현황</h1>
+<h3>인원 (<span th:text="${board.headcnt}"></span>/<span th:text="${board.capacity}"></span>)</h3>
+
+<table border="1">
+    <tr>
+        <th>아이디</th><th>구성원</th><th>상태</th><th>신청일</th><th>관리</th>
+    </tr>
+    <tr th:each="group : ${list}">
+        <td th:text="${group.memberId}"></td>
+        <td th:text="${group.role}"></td>
+        <td th:text="${group.status}"></td>
+        <td th:text="${group.joinedDate}"></td>
+        <td>
+            <div th:if="${group.role != 'LEADER' and board.status == 'OPEN'}">
+                <button type="button" th:onclick="process([[${group.groupId}]], 'APPROVE')">승인</button>
+                <button type="button" th:onclick="process([[${group.groupId}]], 'REJECT')">거절</button>
+            </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

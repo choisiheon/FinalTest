@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <style>
+        h3 { margin-top: 30px; }
+        .status-open { color: blue; }
+        .status-closed { color: red; }
+    </style>
+</head>
+<body>
+<h1>마이페이지</h1>
+<div>
+    <strong>[[${id}]]</strong>님 환영합니다.
+</div>
+
+<h3>내가 주최한 모임 (Leader)</h3>
+<table border="1">
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>모집상태</th>
+        <th>인원(현황/정원)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(leaderList)}">
+        <td colspan="4" align="center">주최한 모임이 없습니다.</td>
+    </tr>
+    <tr th:each="item : ${leaderList}">
+        <td th:text="${item.boardNum}"></td>
+        <td>
+            <a th:href="@{/board/detail(boardNum=${item.boardNum})}" th:text="${item.boardTitle}"></a>
+        </td>
+        <td th:text="${item.boardStatus}"
+            th:class="${item.boardStatus == 'OPEN' ? 'status-open' : 'status-closed'}"></td>
+        <td th:text="|${item.boardHeadcnt} / ${item.boardCapacity}|"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>내가 신청한 모임 (Member)</h3>
+<table border="1">
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>주최자</th>
+        <th>모집상태</th>
+        <th>나의상태</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(memberList)}">
+        <td colspan="5" align="center">참여한 모임이 없습니다.</td>
+    </tr>
+    <tr th:each="item : ${memberList}">
+        <td th:text="${item.boardNum}"></td>
+        <td>
+            <a th:href="@{/board/detail(boardNum=${item.boardNum})}" th:text="${item.boardTitle}"></a>
+        </td>
+        <td th:text="${item.boardWriter}"></td>
+        <td th:text="${item.boardStatus}"
+            th:class="${item.boardStatus == 'OPEN' ? 'status-open' : 'status-closed'}"></td>
+        <td th:text="${item.status}"></td> </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/">홈으로</a>
+</body>
+</html>

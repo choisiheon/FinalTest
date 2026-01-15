@@ -16,10 +16,13 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
     //로그인 없이 접근 가능 경로
     private static final String[] PUBLIC_URLS = {
-            "/"                     //root
-            , "/images/**"          //이미지 경로
-            , "/css/**"             //CSS파일들
-            , "/js/**"              //JavaSCript 파일들
+            "/"
+            , "/images/**"
+            , "/css/**"
+            , "/js/**"
+            , "/member/joinForm"    // 회원가입 폼
+            , "/member/join"        // 회원가입 처리
+            , "/member/idCheck"     // (아이디 중복확인 기능이 있다면 추가)
     };
 
     @Bean
